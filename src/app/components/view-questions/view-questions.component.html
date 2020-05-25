@@ -1,0 +1,54 @@
+<h5  class="text-center text-info">Unattempted : {{unattempted}}</h5>
+<div class="row container-fluid no-gutters">
+  <div class="card col-md-5 mt-4 mx-auto "  *ngFor="let question of questions; let i = index"
+  >
+  
+    <div class="card-header" #qHeader>{{question.question_text}}</div>
+    <div class="card-body">
+      
+      <form #saveForm="ngForm">
+         <div class="row">
+        <div class="col-md-12 form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input"  ngModel #radioAnswer='ngModel' name="radioChoice{{i}}" required (click)="updateAnswer('YES',[i],otherAns,0)"  value="YES" /> Yes
+          </label>
+        </div>
+        <div class="col-md-12 form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" ngModel #radioAnswer='ngModel'  name="radioChoice{{i}}" required value="NO" (click)="updateAnswer('NO',[i],otherAns,0)" /> No
+          </label>
+        </div>
+        <div class="col-md-2 col-sm-2 form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" ngModel #radioAnswer='ngModel'  name="radioChoice{{i}}" required value="OTHER" (click)="updateAnswer('OTHER',[i],otherAns,1)" /> Other
+          </label>
+        </div>
+        <div class="col-md-10 col-sm-10 form-check">
+          <label class="form-check-label">
+            <textarea maxlength="128" rows="1" cols="120" class="form-control" ngModel #otherAns  style="visibility: hidden;" ></textarea>
+          </label>
+        </div>
+        
+          <input type="submit" class="btn btn-primary col-md-3 " 
+          (click)="saveAnswer([question.id],[i],otherAns.value,saveForm,otherAns,qHeader);" value='Save' [disabled]=
+          "saveForm.form.invalid || radioAnswer.value=='OTHER' && otherAns.value.length ==0"
+          >
+          &nbsp; &nbsp;
+          <input type="reset" class="btn btn-danger col-md-3 ">
+        
+        
+          
+    
+        
+        
+         </div>
+      </form>
+  
+    </div>
+    
+  </div>
+  
+  </div>  
+  
+
+          

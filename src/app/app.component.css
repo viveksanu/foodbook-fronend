@@ -1,0 +1,20 @@
+
+
+header{
+    
+    position: relative;
+    z-index: 50;
+    width: 100%;
+    background-color: black;
+}
+
+
+a{height:75px;
+font-size:15px;
+line-height:18px;
+padding:8px 0 0 65px;
+color:#ffff;display:block;
+background:url(../assets/logo.PNG) no-repeat
+
+}
+
